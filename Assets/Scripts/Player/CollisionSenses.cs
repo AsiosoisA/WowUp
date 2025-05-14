@@ -40,7 +40,7 @@ public class CollisionSenses : MonoBehaviour
         {
             Collider col = hitInfo.collider;
             float rawTopY = col.bounds.max.y;
-            const float heightOffset = 1.425f;  // 경험적으로 도출된 보정치
+            const float heightOffset = 1.425f;  
             return rawTopY - heightOffset;
         }
         return Mathf.NegativeInfinity;

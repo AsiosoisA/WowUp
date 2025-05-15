@@ -38,6 +38,8 @@ public class ClimbUpState : ActionState
     public override void LogicUpdate()
     {
         base.LogicUpdate();
+
+        if(isAnimationFinished) isActionDone = true;
     }
  
     public override void PhysicsUpdate()

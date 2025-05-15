@@ -13,6 +13,8 @@ public class PlayerData : ScriptableObject
     public float acceleration = 20f;
     public float deceleration = 30f;    
     public float rollSpeed = 2f;
+    // public float maxWallRunSpeed = 4f;
+    public float wallRunSpeed = 4f;
 
     [Header("Animation Smoothing")]
     [Range(0, 1)] public float speedDampTime = 0.1f;
@@ -22,4 +24,8 @@ public class PlayerData : ScriptableObject
 
     [Header("Air Control Settings")]
     public float airControlDampTime = 0.2f;
+
+    [Header("ShadowDash")]
+    public float shadowDashHoldTime = 2f;
+    public float shadowDashForce = 5f;
 }

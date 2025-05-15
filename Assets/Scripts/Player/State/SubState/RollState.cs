@@ -40,6 +40,8 @@ public class RollState : ActionState
     public override void LogicUpdate()
     {
         base.LogicUpdate();
+
+        if(isAnimationFinished) isActionDone = true;
         
         if(!isGrounded)
         {

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Movement : MonoBehaviour
 {
@@ -7,8 +8,11 @@ public class Movement : MonoBehaviour
     public bool CanSetVelocity { get; set; }
     public Vector3 CurrentVelocity { get; private set; }
     public float CurrentSpeed { get; private set; }
+
+    public Transform orientation;
+
     private Vector3 workspace;
-    
+
     #region Unity Callback Functions
     public void Awake()
     {

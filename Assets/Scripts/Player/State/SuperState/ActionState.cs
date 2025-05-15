@@ -24,7 +24,7 @@ public class ActionState : State
     {
         base.LogicUpdate();
 
-        if(isAnimationFinished)
+        if(isActionDone)
         {
             if(!isGrounded)
             {

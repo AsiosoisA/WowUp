@@ -15,8 +15,8 @@ public class CollisionSenses : MonoBehaviour
 
     public bool Ground => Physics.CheckSphere(groundCheck.position, groundCheckRadius, whatIsGround);
 
-    public bool WallRight => Physics.Raycast(shoulderCheck.position, shoulderCheck.right, 1f, whatIsWall);
-    public bool WallLeft => Physics.Raycast(shoulderCheck.position, -shoulderCheck.right, 1f, whatIsWall);
+    public bool WallRight => Physics.Raycast(shoulderCheck.position, shoulderCheck.right, 0.5f, whatIsWall);
+    public bool WallLeft => Physics.Raycast(shoulderCheck.position, -shoulderCheck.right, 0.5f, whatIsWall);
 
     /// <summary>
     /// 원시 클라임업 조건: groundCheck 또는 shoulderCheck에서 충돌, headCheck에서는 미충돌

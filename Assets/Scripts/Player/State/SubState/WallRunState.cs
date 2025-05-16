@@ -32,12 +32,13 @@ public class WallRunState : ActionState
     {
         base.LogicUpdate();
 
-        if(isAnimationFinished || (!isWallLeft && !isWallRight)) isActionDone = true;
-
         if(jumpInput)
         {
+            player.Anim.SetBool("wallJump", true);
             stateMachine.ChangeState(player.wallJumpState);
         }
+
+        if(isAnimationFinished || (!isWallLeft && !isWallRight)) isActionDone = true;
     }
 
     public override void PhysicsUpdate()
@@ -71,7 +72,8 @@ public class WallRunState : ActionState
         base.Exit();
 
         player.RB.useGravity = true;
-    
+
+
         player.Anim.SetBool("wallRunLeft", false);
         player.Anim.SetBool("wallRunRight", false);
     }

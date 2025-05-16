@@ -3,6 +3,9 @@ using UnityEngine;
 public class FreeFallState : State
 {  
     private float groundedTime;
+    private ToggleRagdoll Ragdoll;
+
+
     public FreeFallState(Player _player, StateMachine _stateMachine, PlayerData _playerData)
         : base(_player, _stateMachine, _playerData) {}
 
@@ -11,6 +14,9 @@ public class FreeFallState : State
         base.Enter();
         groundedTime = 0f;
         // RagDoll 시작
+        Ragdoll = Object.FindAnyObjectByType<ToggleRagdoll>();
+        Ragdoll.Toggle();
+
     }
 
     public override void HandleInput()
@@ -45,5 +51,7 @@ public class FreeFallState : State
     public override void Exit()
     {
         base.Exit();
+        // RagDoll 끝
+        Ragdoll.Toggle();
     }
 }

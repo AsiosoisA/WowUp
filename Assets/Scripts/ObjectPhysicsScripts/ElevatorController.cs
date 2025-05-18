@@ -5,16 +5,18 @@ public class ElevatorController : MonoBehaviour
 {
     public float speed = 2f;
     public float delayBeforeMove = 3f;
-    public Transform targetPosition;
+    public float targetDistance = 20f;
 
     private bool isMoving = false;
     private bool isReturning = false;
     private bool playerOnElevator = false;
     private Vector3 originPosition;
+    private Vector3 targetPosition;
 
     void Start()
     {
         originPosition = transform.position;
+        targetPosition = transform.position + new Vector3(0, targetDistance, 0);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -56,7 +58,7 @@ public class ElevatorController : MonoBehaviour
     {
         if (isMoving)
         {
-            MoveTowards(targetPosition.position, () => isMoving = false);
+            MoveTowards(targetPosition, () => isMoving = false);
         }
         if (isReturning)
         {

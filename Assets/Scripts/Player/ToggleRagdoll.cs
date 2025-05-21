@@ -34,7 +34,7 @@ public class ToggleRagdoll : MonoBehaviour
     public bool IsRagdollGrounded()                 // 래그돌 상태와 래그돌 바닥 감지 조건을 둘 다 만족할 때 
     {
 
-        return isRagdoll && Physics.Raycast(groundCheckPoint.position, Vector3.down, 0.3f, groundMask);
+        return isRagdoll && Physics.Raycast(groundCheckPoint.position, Vector3.down, 0.5f, groundMask);
 
     }
 

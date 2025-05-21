@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
     public InAirState inAirState;
     public ClimbUpState climbUpState;
     public RollState rollState;
+    public FreeFallState freeFallState;
  
     public Rigidbody RB { get; private set; }
     public Animator Anim { get; private set; }
@@ -42,6 +43,7 @@ public class Player : MonoBehaviour
         inAirState = new InAirState(this, StateMachine, playerData);
         climbUpState = new ClimbUpState(this, StateMachine, playerData);
         rollState = new RollState(this, StateMachine, playerData);
+        freeFallState = new FreeFallState(this, StateMachine, playerData);
  
         StateMachine.Initialize(standingState);
  

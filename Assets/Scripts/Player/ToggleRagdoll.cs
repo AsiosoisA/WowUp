@@ -70,9 +70,9 @@ public class ToggleRagdoll : MonoBehaviour
         else if (isRagdoll == true)     // 래그돌 켜져 있으면 래그돌 off
         {
             isRagdoll = false;
-            transform.position = target.position + Point;
             anim.enabled = true;
 
+            transform.position = target.position + Point;
             transform.position += new Vector3(0, 0.25f, 0);
   
 

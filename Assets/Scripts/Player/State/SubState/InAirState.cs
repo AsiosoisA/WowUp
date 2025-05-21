@@ -3,6 +3,7 @@ using UnityEngine;
 public class InAirState : State
 {  
     private bool climbUpCheck;
+    private float airTime;
 
     // 공중 제어용
     private Vector3 airVelocitySmooth;
@@ -35,6 +36,9 @@ public class InAirState : State
     {
         base.LogicUpdate();
 
+        
+        airTime += Time.deltaTime; // 시간 누적
+
         if (isGrounded)
         {
             stateMachine.ChangeState(player.standingState);
@@ -44,6 +48,12 @@ public class InAirState : State
         if (jumpInput && climbUpCheck)
         {
             stateMachine.ChangeState(player.climbUpState);
+            return;
+        }
+
+        if (airTime >= 2f)
+        {
+            stateMachine.ChangeState(player.freeFallState);
             return;
         }
     }

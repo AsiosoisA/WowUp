@@ -28,6 +28,15 @@ public class ToggleRagdoll : MonoBehaviour
 
     private Vector3 Point;
 
+    [SerializeField] private Transform groundCheckPoint;
+    [SerializeField] private LayerMask groundMask;
+
+    public bool IsRagdollGrounded()                 // 래그돌 상태와 래그돌 바닥 감지 조건을 둘 다 만족할 때 
+    {
+
+        return isRagdoll && Physics.Raycast(groundCheckPoint.position, Vector3.down, 0.3f, groundMask);
+
+    }
 
     private void Start()
     {
@@ -36,7 +45,7 @@ public class ToggleRagdoll : MonoBehaviour
 
     }
 
-    private void Toggle()
+    public void Toggle()
     {
         if (isRagdoll == false)
         {
@@ -102,5 +111,11 @@ public class ToggleRagdoll : MonoBehaviour
             Test();
         }
 
+    }
+
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.green;
+        Gizmos.DrawLine(groundCheckPoint.position, groundCheckPoint.position + Vector3.down * 0.3f);
     }
 }

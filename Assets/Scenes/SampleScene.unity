@@ -2149,6 +2149,10 @@ MonoBehaviour:
   - {fileID: 630639068}
   - {fileID: 1131036886}
   target: {fileID: 3480852305498967809}
+  groundCheckPoint: {fileID: 3480852305498967809}
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 8
 --- !u!1 &613928358
 GameObject:
   m_ObjectHideFlags: 0

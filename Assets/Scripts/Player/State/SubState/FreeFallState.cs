@@ -28,10 +28,10 @@ public class FreeFallState : State
     {
         base.LogicUpdate();
 
-        if(Ragdoll.IsRagdollGrounded())  groundedTime += Time.deltaTime;            // 래그돌의 땅 감지 조건으로 대체되었습니다
+        if(Ragdoll.IsRagdollGrounded())  groundedTime += Time.deltaTime;
         else groundedTime = 0f;
 
-        if(groundedTime > 2f)
+        if (groundedTime > 2f)
         {
             // StandUpState 진입 ( 아직 미구현 )
             stateMachine.ChangeState(player.standingState);     // 일단 standing으로 설정

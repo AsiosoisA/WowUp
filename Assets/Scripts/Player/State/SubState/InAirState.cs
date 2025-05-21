@@ -1,13 +1,14 @@
 using UnityEngine;
 
 public class InAirState : State
-{  
+{
     private bool climbUpCheck;
-    private float airTime;
 
     // 공중 제어용
     private Vector3 airVelocitySmooth;
     [SerializeField] private float airControlDampTime = 0.2f;
+
+    private float airTime; // 공중에 머문 시간
 
     public InAirState(Player _player, StateMachine _stateMachine, PlayerData _playerData)
         : base(_player, _stateMachine, _playerData) {}
@@ -16,16 +17,17 @@ public class InAirState : State
     {
         base.Enter();
         player.Anim.SetBool("inAir", true);
-        // 초기 workspace 설정
+
         workspace = Vector3.zero;
         airVelocitySmooth = Vector3.zero;
+
+        airTime = 0f; // 시간 초기화
     }
 
     public override void HandleInput()
     {
         base.HandleInput();
 
-        // 공중 입력 반영
         workspace = new Vector3(xInput * playerData.airControl, 0, yInput * playerData.airControl);
         workspace = workspace.x * player.cameraTransform.right.normalized +
                     workspace.z * player.cameraTransform.forward.normalized;
@@ -36,7 +38,6 @@ public class InAirState : State
     {
         base.LogicUpdate();
 
-        
         airTime += Time.deltaTime; // 시간 누적
 
         if (isGrounded)
@@ -63,7 +64,6 @@ public class InAirState : State
         base.PhysicsUpdate();
         DoCheck();
 
-        // 최고점 이후(하강 시작)부터 수평 제어
         if (player.RB.linearVelocity.y < 0.1f)
         {
             Vector3 currentHoriz = new Vector3(
@@ -85,7 +85,6 @@ public class InAirState : State
                 newHoriz.z);
         }
 
-        // 공중 회전 처리
         if (workspace.sqrMagnitude > 0f)
         {
             Quaternion targetRotation = Quaternion.LookRotation(workspace);

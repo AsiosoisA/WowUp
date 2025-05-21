@@ -21,8 +21,11 @@ MonoBehaviour:
   acceleration: 20
   deceleration: 30
   rollSpeed: 3
+  wallRunSpeed: 7
   speedDampTime: 0.1
   velocityDampTime: 0.9
   rotationDampTime: 0.2
   airControl: 0.5
   airControlDampTime: 0.2
+  shadowDashHoldTime: 2
+  shadowDashForce: 5

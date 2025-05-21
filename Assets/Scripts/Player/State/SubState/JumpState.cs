@@ -5,6 +5,10 @@ public class JumpState : ActionState
     private bool climbUpCheck;
     private Vector3 jumpVelocity;
     private Vector3 airVelocitySmooth;       // 수평 속도 보간용
+
+    private bool isWallLeft;
+    private bool isWallRight;
+
     [SerializeField] private float airControlDampTime = 0.2f; // 공중 제어 반응 속도
 
     public JumpState(Player _player, StateMachine _stateMachine, PlayerData _playerData) : base(_player, _stateMachine, _playerData)
@@ -40,10 +44,18 @@ public class JumpState : ActionState
     {
         base.LogicUpdate();
 
+        if(isAnimationFinished) isActionDone = true;
+
+
         if(jumpInput && climbUpCheck)
         {
             stateMachine.ChangeState(player.climbUpState);
             return;
+        }
+
+        if(player.InputHandler.NormInputX == -1 && isWallLeft || player.InputHandler.NormInputX == 1 && isWallRight)
+        {
+            stateMachine.ChangeState(player.wallRunState);
         }
     }
  
@@ -93,6 +105,8 @@ public class JumpState : ActionState
         base.DoCheck();
 
         climbUpCheck = player.CollisionSenses.CanClimbUp;
+        isWallLeft = player.CollisionSenses.WallLeft;
+        isWallRight = player.CollisionSenses.WallRight;
     }
  
     public override void Exit()

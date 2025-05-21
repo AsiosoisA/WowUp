@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class ClimbUpState : ActionState
 {  
-    private const float climbYOffset = -0.2f; // ledge 위로 올릴 높이(offset)
+    private const float climbYOffset = 1.1f; // ledge 위로 올릴 높이(offset)
 
     public ClimbUpState(Player _player, StateMachine _stateMachine, PlayerData _playerData) : base(_player, _stateMachine, _playerData)
     {
@@ -38,6 +38,8 @@ public class ClimbUpState : ActionState
     public override void LogicUpdate()
     {
         base.LogicUpdate();
+
+        if(isAnimationFinished) isActionDone = true;
     }
  
     public override void PhysicsUpdate()
@@ -50,7 +52,7 @@ public class ClimbUpState : ActionState
         base.Exit();
 
         float forwardOffsetDistance = 0.7f;
-        float upwardOffsetDistance  = 1.5f;
+        float upwardOffsetDistance  = 0.5f;
 
         // transform.forward 방향으로 0.7, Y축 위로 1.5 만큼 이동
         Vector3 climbOffset = player.transform.forward * forwardOffsetDistance + Vector3.up * upwardOffsetDistance;

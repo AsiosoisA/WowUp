@@ -38,6 +38,7 @@ public class ToggleRagdoll : MonoBehaviour
 
     }
 
+
     private void Start()
     {
         anim = GetComponent<Animator>();
@@ -70,11 +71,13 @@ public class ToggleRagdoll : MonoBehaviour
         else if (isRagdoll == true)     // 래그돌 켜져 있으면 래그돌 off
         {
             isRagdoll = false;
+            
             anim.enabled = true;
 
-            transform.position = target.position + Point;
             transform.position += new Vector3(0, 0.25f, 0);
-  
+
+            transform.position = target.position + Point;
+
 
             for (int i = 0; i < RagDollcolliders.Length; ++i)
             {
@@ -101,6 +104,8 @@ public class ToggleRagdoll : MonoBehaviour
     void Update()
     {
 
+        
+
         if (Input.GetKeyDown(KeyCode.Z))
         {
             Toggle();
@@ -118,4 +123,5 @@ public class ToggleRagdoll : MonoBehaviour
         Gizmos.color = Color.green;
         Gizmos.DrawLine(groundCheckPoint.position, groundCheckPoint.position + Vector3.down * 0.3f);
     }
+
 }

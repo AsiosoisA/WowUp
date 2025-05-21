@@ -11,8 +11,12 @@ public class CollisionSenses : MonoBehaviour
 
     [SerializeField] private LayerMask whatIsGround;
     [SerializeField] private LayerMask whatIsObject;
+    [SerializeField] private LayerMask whatIsWall;
 
     public bool Ground => Physics.CheckSphere(groundCheck.position, groundCheckRadius, whatIsGround);
+
+    public bool WallRight => Physics.Raycast(shoulderCheck.position, shoulderCheck.right, 0.5f, whatIsWall);
+    public bool WallLeft => Physics.Raycast(shoulderCheck.position, -shoulderCheck.right, 0.5f, whatIsWall);
 
     /// <summary>
     /// 원시 클라임업 조건: groundCheck 또는 shoulderCheck에서 충돌, headCheck에서는 미충돌
@@ -40,7 +44,7 @@ public class CollisionSenses : MonoBehaviour
         {
             Collider col = hitInfo.collider;
             float rawTopY = col.bounds.max.y;
-            const float heightOffset = 1.425f;  // 경험적으로 도출된 보정치
+            const float heightOffset = 1.425f;  
             return rawTopY - heightOffset;
         }
         return Mathf.NegativeInfinity;

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class Player : MonoBehaviour
     public PlayerInputHandler InputHandler { get; protected set; }
     public CollisionSenses CollisionSenses { get; protected set; }
     public Movement Movement { get; protected set; }
+    public ToggleRagdoll Ragdoll { get; protected set; }
 
     public StandingState standingState;
     public JumpState jumpState;
@@ -36,6 +38,7 @@ public class Player : MonoBehaviour
         InputHandler = GetComponent<PlayerInputHandler>();
         CollisionSenses = GetComponentInChildren<CollisionSenses>();
         Movement = GetComponentInChildren<Movement>();
+        Ragdoll = GetComponentInChildren<ToggleRagdoll>();
         cameraTransform = Camera.main.transform;
  
         StateMachine = new StateMachine();

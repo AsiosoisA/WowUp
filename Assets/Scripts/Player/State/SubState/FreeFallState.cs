@@ -3,7 +3,6 @@ using UnityEngine;
 public class FreeFallState : State
 {  
     private float groundedTime;
-    private ToggleRagdoll Ragdoll;
 
 
     public FreeFallState(Player _player, StateMachine _stateMachine, PlayerData _playerData)
@@ -14,8 +13,8 @@ public class FreeFallState : State
         base.Enter();
         groundedTime = 0f;
         // RagDoll 시작
-        Ragdoll = Object.FindAnyObjectByType<ToggleRagdoll>();
-        Ragdoll.Toggle();
+        //Ragdoll = Object.FindAnyObjectByType<ToggleRagdoll>();
+        player.Ragdoll.Toggle();
 
     }
 
@@ -28,12 +27,13 @@ public class FreeFallState : State
     {
         base.LogicUpdate();
 
-        if(isGrounded)  groundedTime += Time.deltaTime;
+        if(player.Ragdoll.IsRagdollGrounded())  groundedTime += Time.deltaTime;            // 래그돌의 땅 감지 조건으로 대체되었습니다
         else groundedTime = 0f;
 
         if(groundedTime > 5f)
         {
             // StandUpState 진입 ( 아직 미구현 )
+            stateMachine.ChangeState(player.standingState);     // 일단 standing으로 설정
         }
     }
 
@@ -52,6 +52,6 @@ public class FreeFallState : State
     {
         base.Exit();
         // RagDoll 끝
-        Ragdoll.Toggle();
+        player.Ragdoll.Toggle();
     }
 }

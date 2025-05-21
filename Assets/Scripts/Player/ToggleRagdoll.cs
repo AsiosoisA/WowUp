@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 
 public class ToggleRagdoll : MonoBehaviour
@@ -23,25 +22,38 @@ public class ToggleRagdoll : MonoBehaviour
     private Transform target;
     private Animator anim;
 
-
     private bool isRagdoll = false;
 
     private Vector3 Point;
+
+    [SerializeField] private Transform groundCheckPoint;
+    [SerializeField] private LayerMask groundMask;
+
+    public bool IsRagdollGrounded()                 // ë˜ê·¸ëŒ ìƒíƒœì™€ ë˜ê·¸ëŒ ë°”ë‹¥ ê°ì§€ ì¡°ê±´ì„ ë‘˜ ë‹¤ ë§Œì¡±í•  ë•Œ 
+    {
+        
+        return isRagdoll && Physics.Raycast(groundCheckPoint.position, Vector3.down, 0.3f, groundMask);
+        
+    }
+
+    
 
 
     private void Start()
     {
         anim = GetComponent<Animator>();
         Point = transform.position - target.position;
-
+        
     }
 
     public void Toggle()
     {
         if (isRagdoll == false)
         {
+           
             isRagdoll = true;
-            anim.enabled = false;       // ·¡±×µ¹ ²¨Á® ÀÖÀ¸¸é ·¡±×µ¹ ÀÛµ¿
+            
+            anim.enabled = false;       // ë˜ê·¸ëŒ êº¼ì ¸ ìˆìœ¼ë©´ ë˜ê·¸ëŒ ì‘ë™
 
             for (int i = 0; i < RagDollcolliders.Length; ++i)
             {
@@ -55,18 +67,17 @@ public class ToggleRagdoll : MonoBehaviour
 
             characterCollider.enabled = false;
             characterRB.isKinematic = true;
-
+            
 
         }
-        else if (isRagdoll == true)     // ·¡±×µ¹ ÄÑÁ® ÀÖÀ¸¸é ·¡±×µ¹ off
+        else if (isRagdoll == true)     // ë˜ê·¸ëŒ ì¼œì ¸ ìˆìœ¼ë©´ ë˜ê·¸ëŒ off
         {
+         
             isRagdoll = false;
-            
             anim.enabled = true;
 
-            transform.position += new Vector3(0, 0.25f, 0);
-
             transform.position = target.position + Point;
+            transform.position += new Vector3(0, 0.3f, 0);
 
 
             for (int i = 0; i < RagDollcolliders.Length; ++i)
@@ -80,31 +91,35 @@ public class ToggleRagdoll : MonoBehaviour
             }
 
             characterCollider.enabled = true;
-            characterRB.isKinematic = false;
-
+            characterRB.isKinematic = false;       
         }
     }
-    private void Test()
+ 
+    private void Test()                                     // testìš©, ì‚­ì œ í•„ìš”
     {
-        SpineRB.AddForce(new Vector3(0f, 10000f, 10000f));
+        SpineRB.AddForce(new Vector3(0f, 10000f, 10000f));          
     }
 
-
+    
     // Update is called once per frame
     void Update()
     {
-
         
-
-        if (Input.GetKeyDown(KeyCode.Z))
+        if (Input.GetKeyDown(KeyCode.Z))                            // testìš©, ì‚­ì œ í•„ìš”
         {
             Toggle();
         }
 
-        if (Input.GetKeyDown(KeyCode.X))
+        if (Input.GetKeyDown(KeyCode.X))                           // testìš©, ì‚­ì œ í•„ìš”
         {
             Test();
         }
 
     }
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.green;
+        Gizmos.DrawLine(groundCheckPoint.position, groundCheckPoint.position + Vector3.down * 0.3f);
+    }
+
 }

@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using System.Collections;
 using TMPro;
 
-public class UIController : MonoBehaviour
+public class PopUpTitle : MonoBehaviour
 {
     [SerializeField]
     private CanvasGroup uiGroup; // Logo + Button 묶인 부모에 있는 CanvasGroup
@@ -26,9 +26,11 @@ public class UIController : MonoBehaviour
         uiGroup.blocksRaycasts = false;
 
         startButton.onClick.AddListener(OnStartButtonClicked);
+        
+        
     }
 
-    public void ShowTitle()
+    public void ReceivePopUpTitleSignal()
     {
         StartCoroutine(FadeInUI());
     }

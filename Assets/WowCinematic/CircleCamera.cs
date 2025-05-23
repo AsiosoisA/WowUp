@@ -11,10 +11,9 @@ public class CircleCamera : MonoBehaviour
 
     void Update()
     {
-        if(vcam.HorizontalAxis.Value <= 360)
-        {
+       
             vcam.HorizontalAxis.Value += speed * Time.deltaTime;
-        }
+        
         
         
     }

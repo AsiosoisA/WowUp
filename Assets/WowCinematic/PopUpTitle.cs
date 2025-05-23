@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 using TMPro;
+using Unity.VisualScripting;
 
 public class PopUpTitle : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class PopUpTitle : MonoBehaviour
 
     [SerializeField]
     private float FadeTime= 3f;
+
+    private bool isTitleOn = false;
     
     // 캐릭터 움직임을 잠그기 위한 캐릭터 게임 오브젝트 변수 필요
 
@@ -37,6 +40,10 @@ public class PopUpTitle : MonoBehaviour
 
     IEnumerator FadeInUI()
     {
+        if(isTitleOn) 
+        {
+            yield break;
+        }
         float t = 0;
         while (t < FadeTime)
         {
@@ -45,6 +52,13 @@ public class PopUpTitle : MonoBehaviour
             yield return null;
         }
         uiGroup.blocksRaycasts = true; // 버튼 클릭 허용
+        isTitleOn = true;
+        
+    }
+    public void ReceiveFadeOuTitleSignal()
+    {
+        Debug.Log("Fade Out 실행 ");
+        StartCoroutine(FadeOutUI());
     }
 
     private void OnStartButtonClicked()
@@ -54,6 +68,10 @@ public class PopUpTitle : MonoBehaviour
 
     IEnumerator FadeOutUI()
     {
+        if(!isTitleOn)
+        {
+            yield break;
+        }
         uiGroup.blocksRaycasts = false;
 
         float t = FadeTime;
@@ -66,5 +84,6 @@ public class PopUpTitle : MonoBehaviour
 
         // 인풋 해제
         gameObject.SetActive(false); // UI 비활성화
+        isTitleOn = false;
     }
 }

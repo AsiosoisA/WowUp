@@ -32,8 +32,7 @@ public class FreeFallState : State
 
         if(groundedTime > 5f)
         {
-            // StandUpState 진입 ( 아직 미구현 )
-            stateMachine.ChangeState(player.standingState);     // 일단 standing으로 설정
+            stateMachine.ChangeState(player.standUpState);
         }
     }
 

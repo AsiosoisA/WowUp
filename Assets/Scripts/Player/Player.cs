@@ -20,6 +20,7 @@ public class Player : MonoBehaviour
     public WallRunState wallRunState;
     public WallJumpState wallJumpState;
     public FreeFallState freeFallState;
+    public StandUpState standUpState;
  
     public Rigidbody RB { get; private set; }
     public Animator Anim { get; private set; }
@@ -51,6 +52,7 @@ public class Player : MonoBehaviour
         wallRunState = new WallRunState(this, StateMachine, playerData);
         wallJumpState = new WallJumpState(this, StateMachine, playerData);
         freeFallState = new FreeFallState(this, StateMachine, playerData);
+        standUpState = new StandUpState(this, StateMachine, playerData);
  
         StateMachine.Initialize(standingState);
  

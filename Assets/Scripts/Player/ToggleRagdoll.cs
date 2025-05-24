@@ -11,7 +11,7 @@ public class ToggleRagdoll : MonoBehaviour
     private Rigidbody SpineRB;
 
     [SerializeField]
-    private CapsuleCollider characterCollider;
+    public CapsuleCollider characterCollider;
 
     [SerializeField]
     private Collider[] RagDollcolliders;

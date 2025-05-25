@@ -8,15 +8,22 @@ public class CollisionSenses : MonoBehaviour
 
     [SerializeField] private float groundCheckRadius;
     [SerializeField] private float climbUpCheckLength = 0.5f;
+    [SerializeField] private float waterCheckRadius = 0.2f; // 물 감지 반경 (조정 가능)
 
     [SerializeField] private LayerMask whatIsGround;
     [SerializeField] private LayerMask whatIsObject;
     [SerializeField] private LayerMask whatIsWall;
+    [SerializeField] private LayerMask whatIsWater; // 물 레이어
 
     public bool Ground => Physics.CheckSphere(groundCheck.position, groundCheckRadius, whatIsGround);
 
     public bool WallRight => Physics.Raycast(shoulderCheck.position, shoulderCheck.right, 0.5f, whatIsWall);
     public bool WallLeft => Physics.Raycast(shoulderCheck.position, -shoulderCheck.right, 0.5f, whatIsWall);
+
+    /// <summary>
+    /// 캐릭터가 물 속에 있는지 확인
+    /// </summary>
+    public bool IsInWater => Physics.CheckSphere(shoulderCheck.position, waterCheckRadius, whatIsWater);
 
     /// <summary>
     /// 원시 클라임업 조건: groundCheck 또는 shoulderCheck에서 충돌, headCheck에서는 미충돌
@@ -25,7 +32,6 @@ public class CollisionSenses : MonoBehaviour
     {
         get
         {
-            // bool groundHit = Physics.Raycast(groundCheck.position, transform.forward, climbUpCheckLength, whatIsObject);
             bool shoulderHit = Physics.Raycast(shoulderCheck.position, transform.forward, climbUpCheckLength, whatIsObject);
             bool headHit = Physics.Raycast(headCheck.position, transform.forward, climbUpCheckLength, whatIsObject);
             return shoulderHit && !headHit;
@@ -39,17 +45,15 @@ public class CollisionSenses : MonoBehaviour
     public float GetClimbUpLedgeHeight()
     {
         RaycastHit hitInfo;
-        if (Physics.Raycast(shoulderCheck.position, transform.forward, out hitInfo, climbUpCheckLength, whatIsObject)) // ||Physics.Raycast(groundCheck.position, transform.forward, out hitInfo, climbUpCheckLength, whatIsObject)
-            
+        if (Physics.Raycast(shoulderCheck.position, transform.forward, out hitInfo, climbUpCheckLength, whatIsObject))
         {
             Collider col = hitInfo.collider;
             float rawTopY = col.bounds.max.y;
-            const float heightOffset = 1.425f;  
+            const float heightOffset = 1.425f;
             return rawTopY - heightOffset;
         }
         return Mathf.NegativeInfinity;
     }
-
 
     public Vector3 GetClimbUpDirection()
     {
@@ -73,6 +77,13 @@ public class CollisionSenses : MonoBehaviour
         {
             Gizmos.color = Ground ? Color.green : Color.red;
             Gizmos.DrawWireSphere(groundCheck.position, groundCheckRadius);
+        }
+
+        // Water sphere
+        if (groundCheck != null)
+        {
+            Gizmos.color = IsInWater ? Color.blue : Color.cyan;
+            Gizmos.DrawWireSphere(groundCheck.position, waterCheckRadius);
         }
 
         // Climb up checks

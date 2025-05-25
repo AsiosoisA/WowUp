@@ -24,6 +24,7 @@ public class State
 
     protected bool isAnimationFinished;
     protected bool isGrounded;
+    protected bool isInWater;
  
     public State(Player _player, StateMachine _stateMachine, PlayerData _playerData)
     {
@@ -42,7 +43,7 @@ public class State
     {
 
     }
- 
+
     public virtual void LogicUpdate()
     {
         skill1Input = player.InputHandler.Skill1Input;
@@ -54,7 +55,7 @@ public class State
         jumpInput = player.InputHandler.JumpInput;
         input = new Vector2(xInput, yInput);
 
-        if(skill1Input)
+        if (skill1Input)
         {
             Time.timeScale = 0.2f;
             Time.fixedDeltaTime = 0.02f * Time.timeScale;
@@ -62,6 +63,11 @@ public class State
         else
         {
             Time.timeScale = 1f;
+        }
+
+        if (isInWater && stateMachine.CurrentState != player.swimmingState)
+        {
+            stateMachine.ChangeState(player.swimmingState);
         }
     }
  
@@ -77,6 +83,7 @@ public class State
     public virtual void DoCheck()
     {
         isGrounded = player.CollisionSenses.Ground;
+        isInWater = player.CollisionSenses.IsInWater;
         player.Anim.SetBool("isGrounded", isGrounded);
     }
 

@@ -16,6 +16,10 @@ public class PlayerData : ScriptableObject
     // public float maxWallRunSpeed = 4f;
     public float wallRunSpeed = 4f;
     public float wallJumpForce = 5f;
+    public float swimSpeed = 5f;
+    public float swimAcceleration = 10f;
+    public float swimDeceleration = 8f;
+    public float buoyancyForce = 9.81f * 0.5f;
 
     [Header("Animation Smoothing")]
     [Range(0, 1)] public float speedDampTime = 0.1f;

@@ -14,7 +14,7 @@ public class PlayerData : ScriptableObject
     public float deceleration = 30f;    
     public float rollSpeed = 2f;
     // public float maxWallRunSpeed = 4f;
-    public float wallRunSpeed = 4f;
+    public float wallRunSpeed = 8f;
     public float wallJumpForce = 5f;
 
     [Header("Animation Smoothing")]

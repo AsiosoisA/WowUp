@@ -41,7 +41,6 @@ public class Player : MonoBehaviour
         CollisionSenses = GetComponentInChildren<CollisionSenses>();
         Movement = GetComponentInChildren<Movement>();
         Ragdoll = GetComponentInChildren<ToggleRagdoll>();
-        cameraTransform = Camera.main.transform;
  
         StateMachine = new StateMachine();
 

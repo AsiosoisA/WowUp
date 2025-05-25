@@ -1,0 +1,147 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6204013627149948097
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5195480901384537458}
+  - component: {fileID: 4787781990093703241}
+  - component: {fileID: 8501937914647746852}
+  - component: {fileID: 4020811840002790304}
+  - component: {fileID: 3096348777569682572}
+  m_Layer: 0
+  m_Name: TimelineDirector
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5195480901384537458
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6204013627149948097}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!320 &4787781990093703241
+PlayableDirector:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6204013627149948097}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_PlayableAsset: {fileID: 11400000, guid: 8ce1ea0399001c6489eaffc841f5b7ff, type: 2}
+  m_InitialState: 1
+  m_WrapMode: 0
+  m_DirectorUpdateMode: 1
+  m_InitialTime: 0
+  m_SceneBindings:
+  - key: {fileID: 2464695855731173035, guid: 8ce1ea0399001c6489eaffc841f5b7ff, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: -1196540757289617563, guid: 8ce1ea0399001c6489eaffc841f5b7ff, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: 0}
+    value: {fileID: 0}
+  - key: {fileID: 0}
+    value: {fileID: 0}
+  - key: {fileID: -3593249713725878349, guid: 8ce1ea0399001c6489eaffc841f5b7ff, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: -8742037836153507645, guid: 8ce1ea0399001c6489eaffc841f5b7ff, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: -4210900804593900964, guid: 8ce1ea0399001c6489eaffc841f5b7ff, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: -7731198972643430365, guid: 8ce1ea0399001c6489eaffc841f5b7ff, type: 2}
+    value: {fileID: 0}
+  m_ExposedReferences:
+    m_References:
+    - 83dc5e00ba66a2a4d90f44b47547dbf7: {fileID: 0}
+    - 44451d9be6577e2469460965fb5dd9c7: {fileID: 0}
+    - f8dcc7157fd3002418bf7e22c6ae5e57: {fileID: 0}
+    - 9c3a6e61067fa764bbda6b113fde4752: {fileID: 0}
+    - f0df449a84ab37e4681ede22fb43be26: {fileID: 0}
+    - 00417ba16aedfb44d8f35f21befcb978: {fileID: 0}
+    - 3be390696b6f9334d91f3e4571090dcd: {fileID: 0}
+    - 9a12acc61413dcb40bbac8688b9a4a6d: {fileID: 0}
+    - f4eb40498086576478ebedf0af6d26ae: {fileID: 0}
+    - 68f807bd21de5794eba6cf5a2c4fc6e5: {fileID: 0}
+    - bf533c181a2eaa1409359c447aed9a3d: {fileID: 0}
+    - 177cc0e4ecfa75146a381b3b016ffbf2: {fileID: 0}
+    - e723b661eefa58246b8ac86453164c64: {fileID: 0}
+    - 3df0ad5c6abd7e14a885c4cc7c478a2f: {fileID: 0}
+    - 20a1698cd793ef94384b7e619e57975f: {fileID: 0}
+    - 057e03f547baed7489fbb13f0400a983: {fileID: 0}
+    - ffc871240586e704b84e89b7bdd7fbc6: {fileID: 0}
+    - c008e66d3837d5746af20fac93606a12: {fileID: 0}
+--- !u!114 &8501937914647746852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6204013627149948097}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94c76efb85b6264468e3a33cb725d0b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  director: {fileID: 4787781990093703241}
+  GeneralSpeed: 1
+  SlowMotionSpeed: 0.3
+--- !u!114 &4020811840002790304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6204013627149948097}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e52de21a22b6dd44c9cc19f810c65059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Events:
+    m_Signals:
+    - {fileID: 11400000, guid: b8df3879d67913f4692ed47f08e6210e, type: 2}
+    m_Events:
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 8501937914647746852}
+          m_TargetAssemblyTypeName: TimelineSpeedControl, Assembly-CSharp
+          m_MethodName: ToggleSlowMotion
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0.3
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &3096348777569682572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6204013627149948097}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bff283ca04cfe8c459d7c533a2c29a88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vcam: {fileID: 0}
+  speed: 20

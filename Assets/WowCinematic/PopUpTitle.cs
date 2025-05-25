@@ -8,8 +8,6 @@ public class PopUpTitle : MonoBehaviour
 {
     [SerializeField]
     private CanvasGroup uiGroup; // Logo + Button 묶인 부모에 있는 CanvasGroup
-    [SerializeField]
-    private Button startButton;
 
     [SerializeField]
     private float FadeTime= 3f;
@@ -26,10 +24,7 @@ public class PopUpTitle : MonoBehaviour
         
         // UI 초기 상태
         uiGroup.alpha = 0;
-        uiGroup.blocksRaycasts = false;
-
-        startButton.onClick.AddListener(OnStartButtonClicked);
-        
+        uiGroup.blocksRaycasts = false;  
         
     }
 
@@ -82,8 +77,9 @@ public class PopUpTitle : MonoBehaviour
             yield return null;
         }
 
-        // 인풋 해제
-        gameObject.SetActive(false); // UI 비활성화
+        // 인풋 해제 코드 추가 필요 
         isTitleOn = false;
+        gameObject.SetActive(false); // UI 비활성화
+        
     }
 }

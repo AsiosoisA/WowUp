@@ -8,15 +8,40 @@ public class LoopTimeLine : MonoBehaviour
     private PlayableDirector director;
     [SerializeField]
     private double loopStart = 28.0;
+    //[SerializeField]
+    //private double SkipTime = 43.5;
 
     private bool getAnyKey =false;
+    private float EnableInput = 0f;
+    [SerializeField]
+    private float EnableInputTime = 25f;
+    //private bool Skip= false;
 
     void Update()
     {
-        if(Input.anyKeyDown)
+        /*
+        if (Input.GetKey(KeyCode.Escape))
         {
-            getAnyKey = true;
+            if (Skip == false)
+            {
+                SkipIntro();
+                
+            }
+
         }
+        */
+        
+        EnableInput += Time.deltaTime;
+        if(EnableInput>=EnableInputTime)
+        {
+            if (Input.anyKeyDown)
+            {
+                getAnyKey = true;
+            }
+        }
+        
+        
+  
     }
 
     public void StartLoopTimeline()
@@ -25,8 +50,17 @@ public class LoopTimeLine : MonoBehaviour
         {
             director.time = loopStart;
             director.Play();
-            Debug.Log("»£√‚µ ");
+            Debug.Log("StartLoopTimeLine »£√‚µ ");
         }
     }
+
+    /*
+    private void SkipIntro()
+    {
+        director.time = SkipTime;
+        director.Play();
+        Skip = true;
+    }
+    */
 
 }

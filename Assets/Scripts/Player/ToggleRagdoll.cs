@@ -22,7 +22,7 @@ public class ToggleRagdoll : MonoBehaviour
     private Transform target;
     private Animator anim;
 
-    private bool isRagdoll = false;
+    public bool isRagdoll = false;
 
     private Vector3 Point;
 

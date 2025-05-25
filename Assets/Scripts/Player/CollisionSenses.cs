@@ -75,6 +75,7 @@ public class CollisionSenses : MonoBehaviour
             Gizmos.DrawWireSphere(groundCheck.position, groundCheckRadius);
         }
 
+        // Climb up checks
         if (groundCheck != null && shoulderCheck != null && headCheck != null)
         {
             bool groundHit = Physics.Raycast(groundCheck.position, transform.forward, climbUpCheckLength, whatIsObject);
@@ -86,6 +87,18 @@ public class CollisionSenses : MonoBehaviour
             Gizmos.DrawLine(groundCheck.position, groundCheck.position + transform.forward * climbUpCheckLength);
             Gizmos.DrawLine(shoulderCheck.position, shoulderCheck.position + transform.forward * climbUpCheckLength);
             Gizmos.DrawLine(headCheck.position, headCheck.position + transform.forward * climbUpCheckLength);
+        }
+
+        // Wall checks
+        if (shoulderCheck != null)
+        {
+            // WallRight check
+            Gizmos.color = WallRight ? Color.green : Color.red;
+            Gizmos.DrawLine(shoulderCheck.position, shoulderCheck.position + shoulderCheck.right * 0.5f);
+
+            // WallLeft check
+            Gizmos.color = WallLeft ? Color.green : Color.red;
+            Gizmos.DrawLine(shoulderCheck.position, shoulderCheck.position - shoulderCheck.right * 0.5f);
         }
     }
 }

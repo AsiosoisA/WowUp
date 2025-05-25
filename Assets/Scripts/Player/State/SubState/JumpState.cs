@@ -22,7 +22,7 @@ public class JumpState : ActionState
         player.InputHandler.UseJumpInput();
 
         player.Anim.SetBool("jump", true);
-        player.Anim.SetBool("isGround", false);
+        player.Anim.SetBool("isGrounded", false);
 
         jumpVelocity = Vector3.up * playerData.jumpForce;
         currentVelocity = player.RB.linearVelocity;
@@ -114,6 +114,6 @@ public class JumpState : ActionState
         base.Exit();
 
         player.Anim.SetBool("jump", false);
-        player.Anim.SetBool("isGround", true);
+        player.Anim.SetBool("isGrounded", true);
     }
 }

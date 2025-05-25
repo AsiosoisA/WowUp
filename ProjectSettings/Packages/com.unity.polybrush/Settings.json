@@ -9,7 +9,7 @@
             {
                 "type": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                 "key": "RaiseLowerBrush.IgnoreOpenEdges",
-                "value": "{\"m_Value\":true}"
+                "value": "{\"m_Value\":false}"
             },
             {
                 "type": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -42,6 +42,21 @@
                 "value": "{\"m_Value\":true}"
             },
             {
+                "type": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                "key": "Scattering.UsePivotForPlacement",
+                "value": "{\"m_Value\":false}"
+            },
+            {
+                "type": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                "key": "Scattering.ParentObjectsWithSurface",
+                "value": "{\"m_Value\":true}"
+            },
+            {
+                "type": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                "key": "Scattering.AvoidOverlappingObjects",
+                "value": "{\"m_Value\":true}"
+            },
+            {
                 "type": "UnityEngine.Polybrush.BrushMirror, Unity.Polybrush, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
                 "key": "Brush.MirrorAxis",
                 "value": "{\"m_Value\":0}"
@@ -64,7 +79,7 @@
             {
                 "type": "System.Single, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                 "key": "RaiseLowerBrush.Strength",
-                "value": "{\"m_Value\":5.0}"
+                "value": "{\"m_Value\":20.0}"
             },
             {
                 "type": "System.Single, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -85,6 +100,16 @@
                 "type": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                 "key": "GI.WorkflowMode",
                 "value": "{\"m_Value\":1}"
+            },
+            {
+                "type": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                "key": "ScatteringEditor.PreviewThumSize",
+                "value": "{\"m_Value\":64}"
+            },
+            {
+                "type": "UnityEditor.Polybrush.PrefabLoadout, Unity.Polybrush.Editor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+                "key": "ScatteringEditor.userLoadout",
+                "value": "{\"m_Value\":{\"infos\":[{\"palette\":{\"fileID\":11400000,\"guid\":\"dd7a9ea6640bfed4aa393313b8f81c39\",\"type\":2},\"prefab\":{\"fileID\":7020052574263759933,\"guid\":\"aabee6778e0945c448b8f7ef3a930778\",\"type\":3}},{\"palette\":{\"fileID\":11400000,\"guid\":\"dd7a9ea6640bfed4aa393313b8f81c39\",\"type\":2},\"prefab\":{\"fileID\":8916480441829331741,\"guid\":\"de0f0776b9071834eb241b0509139457\",\"type\":3}},{\"palette\":{\"fileID\":11400000,\"guid\":\"dd7a9ea6640bfed4aa393313b8f81c39\",\"type\":2},\"prefab\":{\"fileID\":93873402537375799,\"guid\":\"4bf0766672c8f324b811ca37b66cde7a\",\"type\":3}},{\"palette\":{\"fileID\":11400000,\"guid\":\"dd7a9ea6640bfed4aa393313b8f81c39\",\"type\":2},\"prefab\":{\"fileID\":7560994984747499587,\"guid\":\"92b0c755b000cd449a5f5e7be340d8d9\",\"type\":3}},{\"palette\":{\"fileID\":11400000,\"guid\":\"dd7a9ea6640bfed4aa393313b8f81c39\",\"type\":2},\"prefab\":{\"fileID\":1489365580055717862,\"guid\":\"44ead34412dea784f8ad46286a3935d3\",\"type\":3}}]}}"
             }
         ]
     }

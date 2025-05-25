@@ -40,6 +40,7 @@ public class PopUpTitle : MonoBehaviour
             yield break;
         }
         float t = 0;
+        isTitleOn = true;
         while (t < FadeTime)
         {
             t += Time.deltaTime;
@@ -47,7 +48,7 @@ public class PopUpTitle : MonoBehaviour
             yield return null;
         }
         uiGroup.blocksRaycasts = true; // 버튼 클릭 허용
-        isTitleOn = true;
+        
         
     }
     public void ReceiveFadeOuTitleSignal()
